@@ -29,7 +29,8 @@ def login_page():
     password = st.text_input("Password", type="password")
     if st.button("Login"):
         with st.spinner("Authenticating..."):
-            user_match = user_data[(user_data["Login name"] == username) & (user_data["Password"] == password)]
+            st.write("Columns in CSV:", user_data.columns.tolist())
+            user_match = user_data[(user_data["Login name"] == username) & (user_data["Password"] == Password)]
             if not user_match.empty:
                 st.session_state.logged_in = True
                 st.session_state.emp_id = user_match.iloc[0]["Emp Id"]
